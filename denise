@@ -1,0 +1,20 @@
+def main():
+    import time
+
+    def expulsa_denise():
+        frases = [
+            "Oh, Denise...",
+            "Sai da live, filha!",
+            "Niguém chamou você aqui, caramba",
+            "Tá fazendo o quê aqui?"
+        ]
+        
+        for frase in frases:
+            print(frase)
+            time.sleep(1)  
+
+    expulsa_denise()  
+if __name__ == "__main__":
+    main()
+
+        
