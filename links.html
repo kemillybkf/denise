@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Especialidades CSB</title>
+<style>
+/* ---- RESET ---- */
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+
+body {
+  background-color: #f4f6f5;
+  color: #333;
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---- HEADER ---- */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #196637;
+  color: #fff;
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Título */
+header h1 { font-size: 26px; font-weight: 600; }
+
+/* PERFIL */
+.perfil-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  gap: 8px;
+}
+.perfil-container img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+.perfil-nome { font-weight: 600; color: #fff; }
+
+/* Menu dropdown do perfil */
+.perfil-menu {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background: #fff;
+  color: #333;
+  border-radius: 10px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+  width: 220px;
+  display: none;
+  flex-direction: column;
+  padding: 15px;
+  z-index: 2000;
+}
+.perfil-menu p { margin-bottom: 8px; font-weight: 500; font-size: 14px; }
+.perfil-menu button {
+  background: #196637;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s;
+}
+.perfil-menu button:hover { background: #14502b; }
+
+/* ---- GRID DE ESPECIALIDADES ---- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.box {
+  background-color: #fff;
+  padding: 25px 15px;
+  border-radius: 14px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.box:hover {
+  transform: translateY(-6px);
+  background-color: #e8f5e9;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* ---- FORMULÁRIO ---- */
+.form-container {
+  display: none;
+  max-width: 550px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+  padding: 30px 25px;
+}
+.form-container h2 {
+  margin-bottom: 25px;
+  color: #196637;
+  font-size: 22px;
+  text-align: center;
+}
+.form-container label {
+  display: block;
+  margin: 12px 0 6px;
+  font-weight: 600;
+  font-size: 14px;
+}
+.form-container input,
+.form-container select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 14px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.form-container input:focus,
+.form-container select:focus {
+  border-color: #196637;
+  box-shadow: 0 0 6px rgba(25,102,55,0.5);
+  outline: none;
+}
+.form-container button {
+  margin-top: 25px;
+  width: 100%;
+  background: #196637;
+  color: #fff;
+  border: none;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+.form-container button:hover {
+  background: #14502b;
+  transform: scale(1.02);
+}
+.confirmacao {
+  margin-top: 20px;
+  font-weight: 600;
+  color: #196637;
+  background: #e0f7e9;
+  padding: 12px;
+  border-radius: 10px;
+  display: none;
+  text-align: center;
+}
+
+/* ---- FOOTER ---- */
+footer {
+  background-color: #1b5e20;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: auto;
+  font-size: 14px;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.2);
+}
+
+/* ---- RESPONSIVO ---- */
+@media (max-width: 768px) {
+  .grid { padding: 30px 20px; gap: 15px; }
+  .form-container { padding: 25px 20px; }
+}
+@media (max-width: 480px) {
+  header h1 { font-size: 22px; }
+  .box { font-size: 14px; padding: 20px 10px; }
+  .form-container h2 { font-size: 20px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Especialidades CSB</h1>
+  <div class="perfil-container" id="perfil-container">
+    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" alt="Perfil">
+    <span class="perfil-nome" id="user-name"></span>
+    <div class="perfil-menu" id="perfil-menu">
+      <p id="perfil-info-nome"></p>
+      <p id="perfil-info-email"></p>
+      <p id="perfil-info-telefone"></p>
+      <a href="iniciocsb.html">Sair</a>
+    </div>
+  </div>
+</header>
+
+<section class="grid">
+  <div class="box" onclick="abrirFormulario('Clínica Geral')">🩺 Clínica Geral</div>
+  <div class="box" onclick="abrirFormulario('Cardiologia')">❤️ Cardiologia</div>
+  <div class="box" onclick="abrirFormulario('Dermatologia')">🌞 Dermatologia</div>
+  <div class="box" onclick="abrirFormulario('Ginecologia')">👩‍⚕️ Ginecologia</div>
+  <div class="box" onclick="abrirFormulario('Neurologia')">🧠 Neurologia</div>
+  <div class="box" onclick="abrirFormulario('Pediatria')">👶 Pediatria</div>
+  <div class="box" onclick="abrirFormulario('Psiquiatria')">🧩 Psiquiatria</div>
+  <div class="box" onclick="abrirFormulario('Urologia')">🚹 Urologia</div>
+  <div class="box" onclick="abrirFormulario('Ortopedia')">🦴 Ortopedia</div>
+  <div class="box" onclick="abrirFormulario('Oftalmologia')">👁️ Oftalmologia</div>
+  <div class="box" onclick="abrirFormulario('Otorrinolaringologia')">👂 ORL</div>
+  <div class="box" onclick="abrirFormulario('Endocrinologia')">🧬 Endocrinologia</div>
+  <div class="box" onclick="abrirFormulario('Reumatologia')">🦵 Reumatologia</div>
+  <div class="box" onclick="abrirFormulario('Infectologia')">🦠 Infectologia</div>
+  <div class="box" onclick="abrirFormulario('Pneumologia')">🌬️ Pneumologia</div>
+  <div class="box" onclick="abrirFormulario('Nefrologia')">💧 Nefrologia</div>
+  <div class="box" onclick="abrirFormulario('Oncologia')">🎗️ Oncologia</div>
+  <div class="box" onclick="abrirFormulario('Gastroenterologia')">🥗 Gastro</div>
+  <div class="box" onclick="abrirFormulario('Hematologia')">🩸 Hematologia</div>
+  <div class="box" onclick="abrirFormulario('Alergologia')">🌿 Alergologia</div>
+</section>
+
+<div class="form-container" id="form-agendamento">
+  <h2 id="form-title"></h2>
+  <form id="formulario" onsubmit="agendar(event)">
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" readonly>
+
+    <label for="email">E-mail:</label>
+    <input type="email" id="email" required>
+
+    <label for="telefone">Telefone:</label>
+    <input type="tel" id="telefone" pattern="[0-9]{10,11}" placeholder="Somente números" required>
+
+    <label for="medico">Médico:</label>
+    <select id="medico" required></select>
+
+    <label for="local">Local da Consulta:</label>
+    <select id="local" required>
+      <option value="Clínica">Clínica</option>
+      <option value="Hospital">Hospital</option>
+      <option value="Online">Online (teleconsulta)</option>
+    </select>
+
+    <label for="data">Data:</label>
+    <input type="date" id="data" required>
+
+    <label for="hora">Hora:</label>
+    <input type="time" id="hora" required>
+
+        <button type="submit">Agendar Consulta</button>
+  </form>
+  <div class="confirmacao" id="confirmacao">✅ Consulta agendada com sucesso!</div>
+</div>
+
+<footer>
+  <p>&copy; 2025 CSB - Todos os direitos reservados</p>
+</footer>
+
+<script>
+  // Dados de médicos
+  const medicos = {
+    "Clínica Geral": ["Dr. Felipe Andrade","Dra. Helena Duarte","Dr. Mateus Ribeiro","Dra. Laura Torres"],
+    "Cardiologia": ["Dr. João Silva","Dra. Maria Oliveira","Dr. Pedro Martins","Dra. Bianca Costa"],
+    "Dermatologia": ["Dra. Ana Paula","Dr. Ricardo Mendes","Dra. Cláudia Nogueira","Dr. Thiago Barbosa"],
+    "Ginecologia": ["Dra. Juliana Martins","Dr. André Silva","Dra. Patrícia Carvalho","Dr. Fábio Lima"],
+    "Neurologia": ["Dr. Luiz Almeida","Dra. Camila Rocha","Dr. Roberto Fonseca","Dra. Renata Moura"],
+    "Pediatria": ["Dra. Fernanda Lima","Dr. Carlos Souza","Dra. Aline Pires","Dr. Eduardo Gomes"],
+    "Psiquiatria": ["Dr. Paulo Henrique","Dra. Beatriz Ferreira","Dr. Marcelo Duarte","Dra. Sofia Ramos"],
+    "Urologia": ["Dr. Marcos Vieira","Dra. Luciana Prado","Dr. Gabriel Monteiro","Dr. Rafael Teixeira"],
+    "Ortopedia": ["Dr. Bruno Tavares","Dra. Daniela Gomes","Dr. Victor Moreira"],
+    "Oftalmologia": ["Dr. Sérgio Campos","Dra. Flávia Reis","Dr. Murilo Faria"],
+    "Otorrinolaringologia": ["Dr. Igor Almeida","Dra. Paula Queiroz","Dr. Renato Pires"],
+    "Endocrinologia": ["Dra. Mônica Santos","Dr. Thiago Ferreira","Dra. Juliana Lopes"],
+    "Reumatologia": ["Dr. Gustavo Lima","Dra. Patrícia Rocha","Dr. Eduardo Nunes"],
+    "Infectologia": ["Dr. Henrique Barros","Dra. Renata Souza","Dr. Fábio Castro"],
+    "Pneumologia": ["Dr. Antônio Melo","Dra. Isabela Duarte","Dr. Cléber Ramos"],
+    "Nefrologia": ["Dr. Rodrigo Pereira","Dra. Marina Almeida","Dr. Vinícius Torres"],
+    "Oncologia": ["Dr. Marcelo Carvalho","Dra. Fernanda Dias","Dr. Alexandre Ribeiro"],
+    "Gastroenterologia": ["Dr. Rafael Cunha","Dra. Luciana Silva","Dr. Mateus Figueiredo"],
+    "Hematologia": ["Dr. Paulo Costa","Dra. Camila Ribeiro","Dr. Fernando Rocha"],
+    "Alergologia": ["Dr. André Nascimento","Dra. Bruna Lopes","Dr. Felipe Moura"]
+  };
+
+  // Recuperar usuário logado
+  let usuario = JSON.parse(localStorage.getItem("usuario")) || { nome: "Visitante", email:"", telefone:"" };
+  document.getElementById("user-name").innerText = usuario.nome;
+
+  // Exibir perfil ao clicar
+  const perfilContainer = document.getElementById("perfil-container");
+  const perfilMenu = document.getElementById("perfil-menu");
+  perfilContainer.addEventListener("click", () => {
+    perfilMenu.style.display = perfilMenu.style.display === "flex" ? "none" : "flex";
+    document.getElementById("perfil-info-nome").innerText = "Nome: " + usuario.nome;
+    document.getElementById("perfil-info-email").innerText = "E-mail: " + usuario.email;
+    document.getElementById("perfil-info-telefone").innerText = "Telefone: " + usuario.telefone;
+  });
+
+  // Logout
+  document.getElementById("logout-btn").addEventListener("click", () => {
+    localStorage.removeItem("usuario");
+    window.location.href = "index.html"; // página de login/início
+  });
+
+  // Abrir formulário
+  function abrirFormulario(especialidade) {
+    const form = document.getElementById("form-agendamento");
+    document.getElementById("form-title").innerText = "Agendamento - " + especialidade;
+    form.style.display = "block";
+    document.getElementById("confirmacao").style.display = "none";
+
+    // Preencher médicos
+    const select = document.getElementById("medico");
+    select.innerHTML = "";
+    medicos[especialidade].forEach(m => {
+      const option = document.createElement("option");
+      option.value = m;
+      option.textContent = m;
+      select.appendChild(option);
+    });
+
+    // Preencher nome do usuário logado
+    document.getElementById("nome").value = usuario.nome;
+  }
+
+  // Agendar consulta
+  function agendar(event) {
+    event.preventDefault();
+    document.getElementById("confirmacao").style.display = "block";
+    document.getElementById("formulario").reset();
+    document.getElementById("nome").value = usuario.nome; // manter nome preenchido
+  }
+</script>
+
+</body>
+</html>

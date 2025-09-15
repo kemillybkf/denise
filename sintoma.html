@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Verificação de Sintomas - CSB</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0d5c2b, #1c8c4c);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* ---- HEADER ---- */
+    header {
+      background-color: #1b5e20; /* cor igual ao login/início */
+      color: #fff;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo-container img {
+      width: 55px;
+      margin-right: 12px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      margin-left: 12px;
+      padding: 10px 18px;
+      border-radius: 25px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    nav a.btn-primario {
+      background-color: #fff;
+      color: #1c8c4c;
+      border: 2px solid #fff;
+    }
+
+    nav a.btn-primario:hover { background-color: #f0f0f0; }
+
+    nav a.btn-secundario {
+      background-color: transparent;
+      border: 2px solid #fff;
+      color: #fff;
+    }
+
+    nav a.btn-secundario:hover { background-color: #fff; color: #1c8c4c; }
+
+    /* ---- MAIN ---- */
+    main {
+      flex: 1;
+      max-width: 800px;
+      width: 90%;
+      margin: 30px auto;
+      background: #fff;
+      padding: 40px 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    main h2 {
+      color: #1c8c4c;
+      margin-bottom: 25px;
+      font-size: 26px;
+    }
+
+    label {
+      display: block;
+      margin-top: 18px;
+      font-weight: 500;
+      text-align: left;
+      color: #444;
+    }
+
+    select {
+      width: 100%;
+      padding: 14px;
+      margin-top: 8px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 16px;
+      transition: border 0.3s, box-shadow 0.3s;
+    }
+
+    select:focus {
+      border-color: #1c8c4c;
+      box-shadow: 0 0 6px rgba(28, 140, 76, 0.6);
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 15px;
+      background-color: #1c8c4c;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 600;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 25px;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    button:hover {
+      background-color: #157a3f;
+      transform: scale(1.05);
+    }
+
+    /* ---- RESPOSTA ---- */
+    #resposta {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 10px;
+      font-size: 16px;
+      line-height: 1.5;
+      display: none;
+      white-space: pre-line; /* mantém quebras de linha */
+    }
+
+    #resposta.sucesso {
+      background: #e6f9ed;
+      color: #146b36;
+      border: 1px solid #1c8c4c;
+    }
+
+    #resposta.erro {
+      background: #fdeaea;
+      color: #b22222;
+      border: 1px solid #d9534f;
+    }
+
+    /* ---- FOOTER ---- */
+    footer {
+      background-color: #1b5e20; /* cor igual ao login/início */
+      color: #fff;
+      text-align: center;
+      padding: 18px;
+      font-size: 14px;
+      margin-top: auto;
+    }
+
+    /* ---- RESPONSIVO ---- */
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        margin-top: 10px;
+      }
+
+      main {
+        padding: 25px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="logo-container">
+    <img src="logoc..jpg" alt="Logo CSB" class="logo">
+    <h1>CSB</h1>
+  </div>
+  <nav>
+    <a href="links.html" class="btn-primario">Consulte</a>
+    <a href="iniciocsb.html" class="btn-secundario">Sair</a>
+    <a href="perfil.html" id="nomeUsuarioLink" class="btn-secundario" style="margin-left:10px;">Carregando...</a>
+  </nav>
+</header>
+
+<script>
+  // Carregar nome do usuário do localStorage
+  if (!localStorage.getItem("usuario")) {
+    localStorage.setItem("usuario", JSON.stringify({ nome: "Usuário" }));
+  }
+
+  const usuario = JSON.parse(localStorage.getItem("usuario"));
+  const nomeLink = document.getElementById("nomeUsuarioLink");
+  nomeLink.textContent = usuario.nome; // mostra nome
+  nomeLink.href = "perfil.html"; // link para perfil
+</script>
+
+
+  <main>
+    <h2>Verificação de Sintomas</h2>
+
+    <label for="s1">Sintoma 1:</label>
+    <select id="s1"></select>
+
+    <label for="s2">Sintoma 2:</label>
+    <select id="s2"></select>
+
+    <label for="s3">Sintoma 3:</label>
+    <select id="s3"></select>
+
+    <button onclick="verificar()">🔍 Verificar Doença</button>
+
+    <p id="resposta"></p>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 CSB - Todos os direitos reservados</p>
+  </footer>
+
+  <script>
+    const sintomasLista = [
+      "febre","tosse","dor_cabeca","cansaco","dor_garganta","falta_ar","nariz_entupido","espirros","calafrios",
+      "nausea","vomito","diarreia","dor_muscular","perda_paladar","perda_olfato",
+      "sede_excessiva","urina_frequente","perda_peso","visao_turva","pressao_alta",
+      "dor_peito","falta_concentracao","ansiedade","falta_sono","azia","dor_abdominal",
+      "fome_excessiva","palpitacoes","sangramento_nariz","tontura","coceira","olhos_vermelhos",
+      "pele_amarelada","sangue_urina","suor_noturno","inchaço_pernas","manchas_pele","rigidez_pescoco",
+      "formigamento","confusao","perda_memoria","queda_cabelo","perda_apetite","tremores","calafrios_intensos"
+    ];
+
+    const doencas = {
+      "Gripe": ["febre","tosse","cansaco"],
+      "Resfriado comum": ["espirros","nariz_entupido","dor_garganta"],
+      "Covid-19": ["febre","perda_paladar","perda_olfato","tosse"],
+      "Pneumonia": ["falta_ar","tosse","febre"],
+      "Tuberculose": ["tosse","suor_noturno","febre"],
+      "Asma": ["tosse","falta_ar","falta_concentracao"],
+      "Bronquite": ["tosse","falta_ar","cansaco"],
+      "Sinusite": ["dor_cabeca","nariz_entupido","febre"],
+      "Laringite": ["tosse","dor_garganta","febre"],
+      "Coqueluche": ["tosse","falta_ar","vomito"],
+      "Dengue": ["febre","calafrios","dor_muscular"],
+      "Zika": ["febre","manchas_pele","coceira"],
+      "Chikungunya": ["febre","dor_muscular","dor_cabeca"],
+      "Malária": ["febre","calafrios","suor_noturno"],
+      "Febre Amarela": ["febre","pele_amarelada","dor_cabeca"],
+      "Intoxicação alimentar": ["nausea","vomito","diarreia"],
+      "Gastrite": ["dor_abdominal","azia","nausea"],
+      "Úlcera": ["dor_abdominal","azia","vomito"],
+      "Hepatite": ["pele_amarelada","cansaco","perda_apetite"],
+      "Pancreatite": ["dor_abdominal","nausea","vomito"],
+      "Apendicite": ["dor_abdominal","febre","nausea"],
+      "Doença celíaca": ["diarreia","cansaco","perda_peso"],
+      "Síndrome do intestino irritável": ["dor_abdominal","diarreia","azia"],
+      "Diabetes": ["sede_excessiva","urina_frequente","perda_peso","visao_turva"],
+      "Hipertensão": ["pressao_alta","dor_cabeca","tontura"],
+      "Insuficiência cardíaca": ["falta_ar","dor_peito","inchaço_pernas"],
+      "Obesidade": ["cansaco","fome_excessiva","pressao_alta"],
+      "Doença renal crônica": ["inchaço_pernas","cansaco","sangue_urina"],
+      "Artrite": ["dor_muscular","rigidez_pescoco","cansaco"],
+      "Osteoporose": ["dor_muscular","tontura","queda_cabelo"],
+      "Enxaqueca": ["dor_cabeca","nausea","visao_turva"],
+      "AVC (derrame)": ["formigamento","confusao","rigidez_pescoco"],
+      "Alzheimer": ["perda_memoria","confusao","falta_concentracao"],
+      "Parkinson": ["rigidez_pescoco","tremores","cansaco"],
+      "Ansiedade": ["ansiedade","falta_sono","palpitacoes"],
+      "Depressão": ["cansaco","falta_sono","perda_apetite"],
+      "Epilepsia": ["confusao","tremores","perda_memoria"],
+      "Esquizofrenia": ["confusao","falta_concentracao","ansiedade"],
+      "Lúpus": ["manchas_pele","cansaco","dor_muscular"],
+      "Esclerose múltipla": ["formigamento","cansaco","confusao"],
+      "Psoríase": ["manchas_pele","coceira","dor_muscular"],
+      "Artrite reumatoide": ["dor_muscular","rigidez_pescoco","cansaco"],
+      "Câncer de pulmão": ["tosse","falta_ar","dor_peito"],
+      "Câncer de estômago": ["dor_abdominal","perda_peso","perda_apetite"],
+      "Câncer de fígado": ["pele_amarelada","cansaco","perda_apetite"],
+      "Câncer de pele": ["manchas_pele","coceira","queda_cabelo"],
+      "Leucemia": ["cansaco","sangramento_nariz","suor_noturno"],
+      "Amigdalite": ["febre","dor_garganta"],
+      "Otite": ["dor_cabeca","febre","confusao"],
+      "Conjuntivite": ["olhos_vermelhos","coceira","febre"],
+      "Anemia": ["cansaco","tontura","queda_cabelo"],
+      "Insônia crônica": ["falta_sono","ansiedade","cansaco"],
+      "Hipotireoidismo": ["cansaco","queda_cabelo","perda_memoria"],
+      "Hipertireoidismo": ["perda_peso","palpitacoes","ansiedade"],
+      "Fibromialgia": ["dor_muscular","cansaco","falta_sono"],
+      "Síndrome metabólica": ["pressao_alta","fome_excessiva","obesidade"],
+      "Varíola": ["febre","manchas_pele","calafrios_intensos"]
+    };
+
+    function capitalizar(str) {
+      return str.replace(/_/g," ").replace(/\b\w/g, l => l.toUpperCase());
+    }
+
+    function preencherSelects() {
+      ["s1","s2","s3"].forEach(id => {
+        const sel = document.getElementById(id);
+        sel.innerHTML = '<option value="">Selecione</option>' + 
+          sintomasLista.map(s => `<option value="${s}">${capitalizar(s)}</option>`).join('');
+      });
+    }
+    preencherSelects();
+
+    function verificar() {
+      const selecionados = ["s1","s2","s3"].map(id => document.getElementById(id).value).filter(Boolean);
+      const resposta = document.getElementById("resposta");
+      let possiveis = [];
+
+      for (let doenca in doencas) {
+        const match = doencas[doenca].filter(s => selecionados.includes(s)).length;
+        if (match >= 2) possiveis.push(doenca);
+      }
+
+      resposta.style.display = "block";
+      if (possiveis.length) {
+        resposta.className = "sucesso";
+        resposta.textContent = "✅ Possíveis doenças: " + possiveis.join(", ") + "\n⚠️ Procure um médico para diagnóstico preciso.";
+      } else {
+        resposta.className = "erro";
+        resposta.textContent = "❌ Nenhuma correspondência encontrada. Tente outros sintomas.";
+      }
+    }
+    
+  </script>
+</body>
+</html>

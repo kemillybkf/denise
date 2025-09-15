@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSB - Seu Cartão de Benefícios</title>
+
+  <!-- Fonte moderna -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Ícones (Font Awesome) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* ===== Geral ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* ===== Header ===== */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #1b5e20;
+  color: #fff;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo-container img.logo {
+  height: 40px;
+  margin-right: 10px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: transform 0.2s ease;
+}
+
+nav a:hover {
+  transform: scale(1.05);
+}
+
+nav a.btn-primario,
+nav a.btn-secundario {
+  padding: 10px 18px;
+  border-radius: 25px;
+  margin-left: 10px;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+nav a.btn-primario {
+  background-color: #fff;
+  color: #1c8c4c;
+  border: 2px solid #fff;
+}
+
+nav a.btn-primario:hover {
+  background-color: #f0f0f0;
+}
+
+nav a.btn-secundario {
+  background-color: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+}
+
+nav a.btn-secundario:hover {
+  background-color: #fff;
+  color: #1c8c4c;
+}
+
+/* ===== Hero ===== */
+.hero {
+  background-color: #1c8c4c;
+  padding: 60px 20px;
+}
+
+.hero-conteudo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  max-width: 1100px;
+  margin: auto;
+  flex-wrap: wrap;
+}
+
+.hero-texto {
+  flex: 1;
+  min-width: 280px;
+}
+
+.hero-texto h2 {
+  font-size: 36px;
+  margin-bottom: 15px;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.hero-texto button {
+  background-color: #e63946;
+  border: none;
+  padding: 14px 28px;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease;
+}
+
+.hero-texto button:hover {
+  transform: scale(1.05);
+}
+
+.hero-imagem img {
+  width: 100%;
+  max-width: 360px;
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* ===== Sobre Nós ===== */
+.explica-csb {
+  background: #ffffff;
+  color: #1c8c4c;
+  padding: 80px 20px;
+}
+
+.explica-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1100px;
+  margin: auto;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.explica-texto h2 {
+  font-size: 34px;
+  margin-bottom: 20px;
+}
+
+.explica-texto ul li::before {
+  content: "✔";
+  color: #1c8c4c;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+
+/* ===== Áreas + Contato ===== */
+.contact-info {
+  background-color: #f9f9f9;
+  color: #1b5e20;
+  padding: 60px 20px;
+}
+
+.areas-contact {
+  display: flex;
+  gap: 20px;
+  max-width: 1100px;
+  margin: auto;
+  flex-wrap: wrap;
+}
+
+.areas, .contact {
+  flex: 1;
+  min-width: 280px;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+  color: #fff;
+}
+
+.areas { background-color: #1b5e20; }
+.contact { background-color: #1b5e20; }
+
+.areas:hover, .contact:hover {
+  transform: translateY(-5px);
+}
+
+.areas ul {
+  padding-left: 20px;
+}
+
+.areas ul li {
+  margin-bottom: 8px;
+}
+
+.contact p {
+  margin-bottom: 12px;
+}
+
+.contact p i {
+  margin-right: 8px;
+  color: #ffcc00;
+}
+
+/* ===== Footer ===== */
+footer {
+  background-color: #1b5e20;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+  box-shadow: 0 -2px 8px #1b5e20(0,0,0,0.2);
+}
+
+/* ===== Responsivo ===== */
+@media (max-width: 768px) {
+  .areas-contact { flex-direction: column; }
+  .hero-conteudo { flex-direction: column; }
+}
+
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo-container">
+    <img src="logoc..jpg" alt="Logo" class="logo">
+    <h1>CSB</h1>
+  </div>
+  <nav>
+    <a href="#inicio"><i class="fas fa-home"></i> Início</a>
+    <a href="#sobre"><i class="fas fa-info-circle"></i> Sobre</a>
+    <a href="#contato"><i class="fas fa-gift"></i> Áreas & Contato</a>
+    <a href="login.html" class="btn-secundario"><i class="fas fa-sign-in-alt"></i> Login</a>
+    <a href="cadastro.html" class="btn-primario"><i class="fas fa-user-plus"></i> Cadastro</a>
+  </nav>
+</header>
+
+<!-- Início -->
+<section id="inicio" class="hero">
+  <div class="hero-conteudo">
+    <div class="hero-texto">
+      <h2>De sintomas a soluções: descubra, agende e cuide da sua saúde em um só lugar.</h2>
+      <p>CSB: seu parceiro de saúde, do diagnóstico ao tratamento, com consultas e medicamentos acessíveis.</p>
+    </div>
+    <div class="hero-imagem">
+      <img src="capa.jpg.jpeg" alt="Capa">
+    </div>
+  </div>
+</section>
+
+<!-- Sobre Nós -->
+<section id="sobre" class="explica-csb">
+  <div class="explica-container">
+    <div class="explica-texto">
+      <h2>Sobre Nós</h2>
+      <p>O <strong>CSB - Confederação da Saúde Brasileira</strong> nasceu para tornar o cuidado com a saúde mais simples e acessível.
+      Nossa missão é ajudar você a descobrir possíveis condições de saúde, agendar consultas e adquirir medicamentos de forma prática e segura.</p>
+      <ul>
+        <li>Descubra o que você tem com base em seus sintomas.</li>
+        <li>Agende consultas com médicos e clínicas próximas.</li>
+        <li>Compre medicamentos de forma rápida e segura.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Áreas + Contato -->
+<section id="contato" class="contact-info">
+  <div class="areas-contact">
+    <div class="areas">
+      <h2>Áreas</h2>
+      <ul>
+        <li>Clínica Geral</li>
+        <li>Cardiologia</li>
+        <li>Dermatologia</li>
+        <li>Ginecologia</li>
+        <li>Neurologia</li>
+        <li>Pediatria</li>
+        <li>Psiquiatria</li>
+        <li>Urologia</li>
+        <li>Oftalmologia</li>
+        <li>Otorrinolaringologia</li>
+        <li>Endocrinologia</li>
+        <li>Reumatologia</li>
+        <li>Infectologia</li>
+        <li>Pneumologia</li>
+        <li>Nefrologia</li>
+        <li>Oncologia</li>
+        <li>Gastroenterologia</li>
+        <li>Hematologia</li>
+        <li>Alergologia</li>
+      </ul>
+    </div>
+    <div class="contact">
+      <h2>Contato</h2>
+      <p><i class="fas fa-envelope"></i><strong>Email:</strong> contato@cartaodetodos.com</p>
+      <p><i class="fas fa-phone"></i><strong>Telefone:</strong> +55 11 1234-5678</p>
+      <p><i class="fab fa-whatsapp"></i><strong>WhatsApp:</strong> +55 11 98765-4321</p>
+      <p><i class="fas fa-map-marker-alt"></i><strong>Endereço:</strong> Av. Paulista, 1000 - São Paulo/SP</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 CSB - Todos os direitos reservados</p>
+</footer>
+
+</body>
+</html>
