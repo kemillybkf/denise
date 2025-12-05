@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSB - Seu Cartão de Benefícios</title>
+
+    <!-- Fonte moderna -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Ícones (Font Awesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: #196637;
+            color: #fff;
+            padding: 15px 40px;
+            display: block;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 22px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container img.logo {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: transform 0.2s ease;
+        }
+
+        nav a:hover {
+            transform: scale(1.05);
+        }
+
+
+        .hero {
+            background-color: #1c8c4c;
+            padding: 60px 20px;
+        }
+
+        .hero-conteudo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            max-width: 1100px;
+            margin: auto;
+            flex-wrap: wrap;
+        }
+
+        .hero-texto {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .hero-texto h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .hero-texto button {
+            background-color: #e63946;
+            border: none;
+            padding: 14px 28px;
+            color: #fff;
+            font-size: 16px;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s ease;
+        }
+
+        .hero-texto button:hover {
+            transform: scale(1.05);
+        }
+
+        .hero-imagem img {
+            width: 100%;
+            max-width: 360px;
+            border-radius: 15px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .beneficios {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 60px auto;
+            flex-wrap: wrap;
+            max-width: 1000px;
+        }
+
+        .beneficio {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 25px;
+            width: 230px;
+            text-align: center;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .beneficio:hover {
+            transform: translateY(-5px);
+        }
+
+        .beneficio h3 {
+            color: #1c8c4c;
+            margin-bottom: 10px;
+        }
+
+        .explica-csb {
+            background: linear-gradient(135deg, #1c8c4c, #4caf50);
+            color: #fff;
+            padding: 80px 20px;
+        }
+
+        .explica-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            max-width: 1100px;
+            margin: auto;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .explica-texto h2 {
+            font-size: 34px;
+            margin-bottom: 20px;
+        }
+
+        .explica-texto ul li::before {
+            content: "✔";
+            color: #00ff99;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .explica-texto button {
+            background-color: #ffcc00;
+            border: none;
+            padding: 14px 28px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #1c8c4c;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .explica-texto button:hover {
+            background-color: #ffd633;
+            transform: scale(1.05);
+        }
+
+        .galeria {
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .galeria h2 {
+            margin-bottom: 40px;
+            color: #1b5e20;
+            font-size: 28px;
+        }
+
+        .grid-fotos img {
+            border-radius: 12px;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .grid-fotos img:hover {
+            transform: scale(1.05);
+        }
+
+        .contact-info {
+            background-color: #f9f9f9;
+            color: #1b5e20;
+            padding: 60px 20px;
+        }
+
+        .contact {
+            background-color: #5ccf64;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 15px;
+            color: #fff;
+            flex: 1;
+            min-width: 280px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .areaR {
+            background-color: #ff99aa;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 15px;
+            color: #fff;
+            flex: 1;
+            min-width: 280px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            width: 45%;
+
+        }
+
+        .areaN {
+            background-color: #6699ff;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 15px;
+            color: #fff;
+            flex: 1;
+            min-width: 280px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+             width: 45%;
+
+        }
+
+        .areas:hover,
+        .contact:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact p i {
+            margin-right: 8px;
+            color: #ffcc00;
+        }
+
+        footer {
+            background-color: #1b5e20;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: auto;
+            font-size: 14px;
+            box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="logoc..jpg" alt="Logo" class="logo">
+            <h1>CSB</h1>
+        </div>
+        <nav>
+            <a href="#"><i class="fas fa-info-circle"></i> Início</a>
+            <a href="#"><i class="fas fa-gift"></i> Outubro Rosa</a>
+            <a href="#"><i class="fas fa-envelope"></i> Novembro Azul</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-conteudo">
+            <div class="hero-texto">
+                <h2>Descubra o que você tem sem sair de casa!</h2>
+                <p>Com o CSB você tem acesso a saúde, lazer, educação e muito mais com descontos exclusivos.</p>
+                <button>Saiba Mais</button>
+            </div>
+            <div class="hero-imagem">
+                <img src="capa.jpg.jpeg" alt="Capa">
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefícios, Explica e Galeria (sem mudanças estruturais) -->
+
+    <div class="contact-info">
+        <div class="areas-contact">
+            <div class="areaR">
+                <h2>Outubro Rosa</h2>
+                <p>O <strong>Outubro Rosa</strong> é uma campanha mundial dedicada à conscientização sobre a prevenção e o diagnóstico precoce do câncer de mama, reforçando a importância do cuidado integral com a saúde da mulher. Durante todo o mês, diversas ações são desenvolvidas para informar a população sobre <strong>fatores de risco, formas de prevenção, sinais de alerta e a relevância da realização regular de exames, como a mamografia. </strong> A mobilização busca promover o acesso à informação, estimular o autocuidado e fortalecer redes de apoio, contribuindo para a redução da mortalidade e para a melhoria da qualidade de vida das mulheres.</p>
+            </div>
+            <div class="areaN">
+                <h2>Novembro Azul</h2>
+                <p>As ações do <strong>Novembro Azul</strong>, coordenadas pelo Ministério da Saúde, buscam sensibilizar homens, gestores e profissionais sobre a importância do autocuidado e da atenção integral à saúde masculina, considerando fatores socioculturais ligados à masculinidade. O mês reforça a conscientização sobre cuidados amplos, incluindo <strong>saúde mental, prevenção de ISTs, manejo de doenças crônicas, prevenção de violências e acidentes e incentivo a hábitos saudáveis.</strong> Além das campanhas de agosto e novembro, a Coordenação desenvolve, durante todo o ano, iniciativas de qualificação para trabalhadores e gestores da saúde, promovendo debates e reflexões por meio de eventos presenciais e virtuais, com o objetivo de levar a pauta da saúde do homem a diversos ambientes e fortalecer sua presença na sociedade civil e nos movimentos sociais.</p>
+            </div>
+            </section>
+            <div class="contact">
+                <h2>Contatos de Ajuda</h2>
+                <p><i class="fas fa-envelope"></i><strong>Email:</strong> csbrasil@gmail.com </p>
+                <p><i class="fas fa-phone"></i><strong>Telefone:</strong> +55 11 1234-5678</p>
+                <p><i class="fab fa-whatsapp"></i><strong>WhatsApp:</strong> +55 11 98765-4321</p>
+                <p><i class="fas fa-map-marker-alt"></i><strong>Endereço:</strong> Av. Paulista, 1000 - São Paulo/SP
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 CSB - Todos os direitos reservados</p>
+    </footer>
+
+</body>
+
+</html>
